@@ -1,0 +1,100 @@
+const express = require('express');
+const router = express.Router();
+const {  GencoCap} = require('../Controller/dataContoller');  
+
+const systemCollapsesController = require('../controller/systemCollapsesController');
+const GencoEnergyGeneratedController = require('../controller/GencoEnergyGeneratedController');
+const EnergyGeneratedSourceController = require('../controller/EnergyGeneratedSourceController');
+const GencoInvoicetoNBETController = require('../controller/GencoInvoicetoNBETController');
+const NBETPaymenttoGencoController = require('../controller/NBETPaymenttoGencoController');
+const NBETOutstandingBalancetoGencoController = require('../controller/NBETOutstandingBalancetoGencoController');
+const CustomerPopulationByServiceBandsController = require('../controller/CustomerPopulationByServiceBandsController');
+const EnergySentoutController = require('../controller/EnergySentoutController');
+const TransmissionLossFactorController = require('../controller/TransmissionLossFactorController');
+const EnergyInjectedandDeliveredController = require('../controller/EnergyInjectedandDeliveredController');
+const MOInvoicetoDiscoController = require('../controller/MOInvoicetoDiscoController');
+const DiscoATCCController = require('../controller/DiscoATCCController');
+const AverageTariffController = require('../controller/AverageTariffController');
+const EnergyRecievedController = require('../controller/EnergyRecievedController');
+const EnergyBilledController = require('../controller/EnergyBilledController');
+const RevenueBilledController = require('../controller/RevenueBilledController');
+const RevenueCollectedController = require('../controller/RevenueCollectedController');
+const DiscoLoadOfftakeController = require('../controller/DiscoLoadOfftakeController');
+const DiscoNBETRemitttancesInvoiceController = require('../controller/DiscoNBETRemitttancesInvoiceController');
+const DiscoMORemittancesandInvoiceController = require('../controller/DiscoMORemittancesandInvoiceController');
+const DiscoMeteringStatusController = require('../controller/DiscoMeteringStatusController');
+const CoreInflationRateController = require('../controller/CoreInflationRateController');
+const ForeignExchangeController = require('../controller/ForeignExchangeController');
+const WorldEnergyMixController = require('../controller/WorldEnergyMixController');
+const GHGbyContinentandSectorController = require('../controller/GHGbyContinentandSectorController');
+const LowCarbonShareController = require('../controller/LowCarbonShareController');
+const DiscoCustomerNumberController = require('../controller/DiscoCustomerNumberController');
+const HourlyEnergyGeneratedController = require('../controller/HourlyEnergyGeneratedController');
+const InstalledvsAvailableCapacityController = require('../controller/InstalledvsAvailableCapacityController');
+const ShareofGenerationController = require('../controller/ShareofGenerationController');
+const MiniGrids_InstalledCapacityController = require('../controller/MiniGrids_InstalledCapacityController');
+const MiniGrids_PeopleConnectedController = require('../controller/MiniGrids_PeopleConnectedController');
+const MiniGrids_TotalInvestmentController = require('../controller/MiniGrids_TotalInvestmentController');
+const MiniGrids_ElectricityConsumedController = require('../controller/MiniGrids_ElectricityConsumedController');
+const MiniGrids_CommunitiesConnectedController = require('../controller/MiniGrids_CommunitiesConnectedController');
+const MiniGrids_NumberofCommunititesbyRegisteredProgramsController = require('../controller/MiniGrids_NumberofCommunititesbyRegisteredProgramsController');
+const MiniGrids_InstalledCapacitySourceController = require('../controller/MiniGrids_InstalledCapacitySourceController');
+const MiniGrids_YearlyElectricityConsumptionController = require('../controller/MiniGrids_YearlyElectricityConsumptionController');
+const MiniGrids_NumofConnectionsController = require('../controller/MiniGrids_NumofConnectionsController');
+const CapacityIndustryController = require('../controller/CapacityIndustryController');
+
+
+// Define router to get the logic we need for  genco capacity routes
+router.get('/GencoCap', GencoCap);
+router.get('/system-collapses', systemCollapsesController.getSystemCollapses);
+router.get('/Genco-Energy-Generated', GencoEnergyGeneratedController.getGencoEnergyGenerated);
+router.get('/Energy-Generated-Source', EnergyGeneratedSourceController.getEnergyGeneratedSource);
+router.get('/Genco-Invoice-toNBET', GencoInvoicetoNBETController.getGencoInvoicetoNBET);
+router.get('/NBET-Payment-toGenco', NBETPaymenttoGencoController.getNBETPaymenttoGenco);
+router.get('/NBET-Outstanding-Balance-toGenco', NBETOutstandingBalancetoGencoController.getNBETOustandingBalancetoGenco);
+router.get('/CustomerPopulationby-Service-Bands', CustomerPopulationByServiceBandsController.getCustomerPopulationByServiceBands);
+router.get('/Yearly-Energy-Sentout', EnergySentoutController.getYearlyEnergySentout);
+router.get('/Monthly-Energy-Sentout', EnergySentoutController.getMonthlyEnergySentout);
+router.get('/Transmission-Loss-Factor', TransmissionLossFactorController.getTransmissionLossFactor);
+router.get('/Energy-Injected-and-Delivered', EnergyInjectedandDeliveredController.getEnergyInjectedandDelivered);
+router.get('/MO-Invoice-to-DisCo', MOInvoicetoDiscoController.getMOInvoicetoDisco);
+router.get('/Disco-ATCC', DiscoATCCController.getDiscoATCC);
+router.get('/Yearly-AVG-ATCC', DiscoATCCController.getYearlyAVGATCC);
+router.get('/Yearly-Avg-Tariff', AverageTariffController.getAverageTariff);
+router.get('/Yearly-Disco-Tariff', AverageTariffController.getDiscoTariff);
+router.get('/Yearly-Energy-Recieved', EnergyRecievedController.getYearlyEnergyRecieved);
+router.get('/Disco-Energy-Recieved', EnergyRecievedController.getDiscoEnergyRecieved);
+router.get('/Yearly-Energy-Billed', EnergyBilledController.getYearlyEnergyBilled);
+router.get('/Disco-Energy-Billed', EnergyBilledController.getDiscoEnergyBilled);
+router.get('/Yearly-Revenue-Billed', RevenueBilledController.getYearlyRevenueBilled);
+router.get('/Disco-Revenue-Billed', RevenueBilledController.getDiscoRevenueBilled);
+router.get('/Yearly-Revenue-Collected', RevenueCollectedController.getYearlyRevenueCollected);
+router.get('/Disco-Revenue-Collected', RevenueCollectedController.getDiscoRevenueCollected);
+router.get('/Disco-Load-Offtake', DiscoLoadOfftakeController.getDiscoLoadOfftake);
+router.get('/Disco-NBET-Remmitances-Invoice', DiscoNBETRemitttancesInvoiceController.getDiscoNBETRemittancesInvoice);
+router.get('/Disco-MO-Remmitances-Invoice', DiscoMORemittancesandInvoiceController.getDiscoRemittancesandInvoice);
+router.get('/Disco-Metering-Status', DiscoMeteringStatusController.getDiscoMeteringStatus);
+router.get('/Core-Inflation-Rate', CoreInflationRateController.getCoreInflationRate);
+router.get('/Foreign-Exchange-Rate', ForeignExchangeController.getForeignExchange);
+router.get('/World-Energy-Mix', WorldEnergyMixController.getWorldEnergyMix);
+router.get('/GHG-by-Continent-and-Sector', GHGbyContinentandSectorController.getGHGbyContinentandSector);
+router.get('/Low-Carbon-Share', LowCarbonShareController.getLowCarbonShare);
+router.get('/Disco-Customer-Number', DiscoCustomerNumberController.getDiscoCustomerNumber);
+router.get('/Hourly-Energy-Generated', HourlyEnergyGeneratedController.getHourlyEnergyGenerated);
+router.get('/Installed-vs-Available-Capacity', InstalledvsAvailableCapacityController.getInstalledvsAvailable);
+router.get('/share-of-generation-Capacity', ShareofGenerationController.getShareofGeneration);
+router.get('/MiniGrids-Installed-Capacity', MiniGrids_InstalledCapacityController.getMiniGridsInstalledCapacity);
+router.get('/MiniGrids-People-Connected', MiniGrids_PeopleConnectedController.getMiniGridsPeopleConnected);
+router.get('/MiniGrids-Total-Investment', MiniGrids_TotalInvestmentController.getMiniGridsTotalInvestment);
+router.get('/MiniGrids-Electricity-Consumed', MiniGrids_ElectricityConsumedController.getMiniGridsElectricityConsumed);
+router.get('/MiniGrids-Communities-Connected', MiniGrids_CommunitiesConnectedController.getMiniGridsCommunitiesConnected);
+router.get('/MiniGrids-Num-of-Communities-ByRegistered-Programs', MiniGrids_NumberofCommunititesbyRegisteredProgramsController.getMiniGridsNumofCommunitiesbyRegPrograms);
+router.get('/MiniGrids-Installed-Capacity-Source', MiniGrids_InstalledCapacitySourceController.getMiniGridsInstalledCapacitySource);
+router.get('/MiniGrids-Yearly-Electricity-Consumption', MiniGrids_YearlyElectricityConsumptionController.getMiniGridsYearlyEnergyConsumption);
+router.get('/MiniGrids-Number-of-Connections', MiniGrids_NumofConnectionsController.getMiniGridsNumofConnections);
+router.get('/Capacity-Industry-Percentage', CapacityIndustryController.getCapacityIndustry);
+
+
+module.exports = router;  // Make sure you're exporting the router
+
+

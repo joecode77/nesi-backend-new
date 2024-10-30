@@ -1,13 +1,13 @@
-const { sql, getPool } = require('../config/dataConfig'); 
+const { sql, getPool } = require("../config/dataConfig");
 
 class SystemCollapsesController {
   constructor() {
-    this.poolPromise = getPool(); 
+    this.poolPromise = getPool();
   }
 
   getPool = async () => {
-    return this.poolPromise; 
-  }
+    return this.poolPromise;
+  };
 
   getSystemCollapses = async (req, res) => {
     try {
@@ -17,15 +17,20 @@ class SystemCollapsesController {
       const request = pool.request();
 
       // Execute the stored procedure
-      const result = await request.execute('Sp_systemcollapses');
+      const result = await request.execute("Sp_systemcollapses");
 
       // Send the result to the client
       res.json(result.recordset);
     } catch (error) {
-      console.error('Error fetching system collapses:', error);
-      res.status(500).json({ error: 'An error occurred while fetching system collapses', details: error.message });
+      console.error("Error fetching system collapses:", error);
+      res
+        .status(500)
+        .json({
+          error: "An error occurred while fetching system collapses",
+          details: error.message,
+        });
     }
-  }
+  };
 
   getOtherMetric = async (req, res) => {
     try {
@@ -33,14 +38,19 @@ class SystemCollapsesController {
 
       const request = pool.request();
       // Execute a different stored procedure or SQL query
-      const result = await request.execute('Sp_otherMetric');
+      const result = await request.execute("Sp_otherMetric");
 
       res.json(result.recordset);
     } catch (error) {
-      console.error('Error fetching other metric:', error);
-      res.status(500).json({ error: 'An error occurred while fetching other metric', details: error.message });
+      console.error("Error fetching other metric:", error);
+      res
+        .status(500)
+        .json({
+          error: "An error occurred while fetching other metric",
+          details: error.message,
+        });
     }
-  }
+  };
 
   closePool = async () => {
     const pool = await this.getPool();
@@ -48,7 +58,7 @@ class SystemCollapsesController {
       await pool.close();
       this.poolPromise = null; // Reset the promise
     }
-  }
+  };
 }
 
 module.exports = new SystemCollapsesController();
